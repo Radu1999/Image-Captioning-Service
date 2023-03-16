@@ -18,19 +18,6 @@ model, vis_processors, _ = load_model_and_preprocess(name="blip_caption",
 model.to(device)
 model.eval()
 
-# Define the image transforms
-transform = transforms.Compose([
-    transforms.Resize(256),
-    transforms.CenterCrop(224),
-    transforms.ToTensor(),
-    transforms.Normalize(
-        mean=[0.485, 0.456, 0.406],
-        std=[0.229, 0.224, 0.225]
-    ),
-    transforms.ToPILImage()
-])
-
-
 # Define the route for the POST request
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -47,7 +34,7 @@ def predict():
         response = requests.get(image_url)
         image_bytes = io.BytesIO(response.content)
         # Convert to a PIL Image object
-        image = transform(Image.open(image_bytes))
+        image = Image.open(image_bytes)
     except:
         return "Invalid url / Corrupted Image", status.HTTP_400_BAD_REQUEST
 
