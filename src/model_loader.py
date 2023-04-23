@@ -5,7 +5,7 @@ import redis
 
 # Set the device to use
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
-redis_conn = redis.Redis(host='localhost', port=6379, socket_timeout=30)
+redis_conn = redis.Redis(host='redis', port=6379, socket_timeout=60)
 
 
 def get_model_from_redis():

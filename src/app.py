@@ -27,11 +27,11 @@ def predict():
         # Convert to a PIL Image object
         image = Image.open(image_bytes)
     except:
-        return "Invalid url / Corrupted Image", status.HTTP_400_BAD_REQUEST
+        return "Invalid url / Corrupted Image", stdatus.HTTP_400_BAD_REQUEST
 
     answer = model_loader.predict(image)
     return jsonify(answer), status.HTTP_200_OK
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
