@@ -4,11 +4,11 @@ To run the service:
 
 1. Build image captioning service docker image:
 
-``cd src && docker build -t captioning-service``
+``cd src && docker build -t captioning-service .``
 
 2. Build redis docker image
 
-``cd redis && docker build -t my-redis``
+``cd redis && docker build -t my-redis .``
 
 3. Run docker-compose
 
